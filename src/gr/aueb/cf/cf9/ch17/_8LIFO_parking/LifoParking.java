@@ -1,0 +1,37 @@
+package gr.aueb.cf.cf9.ch17._8LIFO_parking;
+
+import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
+
+public class LifoParking {
+    private final Deque<String> parking = new LinkedList<>();   /*Interface Mediaplayer = new TV()*/
+
+    public LifoParking() { }      //cosbtructor
+
+    public List<String> getParking() {
+        return List.copyOf(parking);
+    }
+
+    // Delegation
+    public void addCar(String car) {
+        parking.push(car);
+        System.out.println(LocalDateTime.now() + ": " + ", Είσοδος, Αρ. Πινακίδας=" + car);
+    }
+
+    public String removeCar() {
+        String car = parking.pop();
+        System.out.println(LocalDateTime.now() + " Έξοδος, Αρ. Πινακίδας=" + car);
+        return car;
+    }
+
+    public boolean isEmpty() {
+        return parking.isEmpty();
+    }
+
+    public void traverse() {
+        parking.forEach(System.out::println);
+    }
+}
